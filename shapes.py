@@ -25,3 +25,18 @@ def caret(line_length, angle, num_points, std_dev):
     y_noisy = y + np.random.normal(0, std_dev, y.shape)
 
     return x_noisy, y_noisy
+
+
+def generate_circular_data(num_points, radius, noise_factor):
+    # Generate angles uniformly
+    angles = np.linspace(0, 2*np.pi, num_points)
+    
+    # Create points in polar coordinates
+    x = radius * np.cos(angles)
+    y = radius * np.sin(angles)
+    
+    # Add noise to the points
+    x += np.random.normal(0, noise_factor, num_points)
+    y += np.random.normal(0, noise_factor, num_points)
+    
+    return x, y
