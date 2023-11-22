@@ -1,6 +1,6 @@
 import numpy as np
 
-def caret(line_length, angle, num_points, std_dev):
+def caret(line_length, angle, num_points, std_dev, seed=None):
     # Calculate the slopes of the lines
     slope = np.tan(angle)
 
@@ -21,13 +21,15 @@ def caret(line_length, angle, num_points, std_dev):
     y = np.concatenate((y1, y2))
 
     # Add Gaussian noise to the x and y coordinates
+    # add seed for reproducibility
+    np.random.seed(seed)
     x_noisy = x + np.random.normal(0, std_dev, x.shape)
     y_noisy = y + np.random.normal(0, std_dev, y.shape)
 
     return x_noisy, y_noisy
 
 
-def generate_circular_data(num_points, radius, noise_factor):
+def generate_circular_data(num_points, radius, noise_factor, seed=None):
     # Generate angles uniformly
     angles = np.linspace(0, 2*np.pi, num_points)
     
@@ -36,6 +38,7 @@ def generate_circular_data(num_points, radius, noise_factor):
     y = radius * np.sin(angles)
     
     # Add noise to the points
+    np.random.seed(seed)
     x += np.random.normal(0, noise_factor, num_points)
     y += np.random.normal(0, noise_factor, num_points)
     
