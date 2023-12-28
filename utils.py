@@ -12,9 +12,13 @@ def generate_continuously_colored_samples(num_samples):
              a sample [x, y], and colors is a list of colors corresponding to each sample.
     """
     # Sample x and y coordinates from standard normal distributions
-    x_samples = np.random.normal(0, 1, num_samples)
-    y_samples = np.random.normal(0, 1, num_samples)
-    samples = np.column_stack((x_samples, y_samples))
+    x_samples = torch.randn(num_samples)
+    y_samples = torch.randn(num_samples)
+    samples = torch.stack((x_samples, y_samples), dim=1)
+    # x_samples = np.random.normal(0, 1, num_samples)
+    # y_samples = np.random.normal(0, 1, num_samples)
+    # samples = np.column_stack((x_samples, y_samples))
+
 
     # Use a colormap to map y-values to colors
     colormap = plt.cm.rainbow
