@@ -1,6 +1,6 @@
 import numpy as np
 
-def caret(line_length, angle, num_points, noise_std, seed=None):
+def caret(num_points, line_length, angle, noise_std, seed=None):
     """
     Generate points on a caret shape with the specified parameters.
 
@@ -42,7 +42,7 @@ def caret(line_length, angle, num_points, noise_std, seed=None):
 
 
 
-def circle(radius, num_points, noise_std, seed=None):
+def circle(num_points, radius, noise_std, seed=None):
     """
     Generate points on a circle with radius `radius` and add Gaussian noise.
 
@@ -70,7 +70,7 @@ def circle(radius, num_points, noise_std, seed=None):
 
 
 
-def double_circle(radius1, radius2, num_points, noise_std, seed=None):
+def double_circle(num_points, radius1, radius2, noise_std, seed=None):
     """
     Generate points on 2 circles with radius `radius1` and `radius2` and add Gaussian noise.
 
@@ -94,7 +94,7 @@ def double_circle(radius1, radius2, num_points, noise_std, seed=None):
     return x, y
 
 
-def n_regular_polygon(n, radius, num_points, noise_std, angle=0, arc_height=None, seed=None):
+def n_regular_polygon(num_points, n, radius, noise_std, angle=0, arc_height=None, seed=None):
     """
     Generate points on a regular polygon with `n` sides and add Gaussian noise, with the 
     option to generate an arc instead of a straight line on the sides of the polygon when 
@@ -169,7 +169,7 @@ def n_regular_polygon(n, radius, num_points, noise_std, angle=0, arc_height=None
         # return x, y, x_vertices, y_vertices # for debugging
 
 
-def grid(n, dist, num_points, noise_std, seed=None):
+def grid(num_points, n, dist, noise_std, seed=None):
     """
     Generate points on a grid with `n` vertices in each direction and add Gaussian noise. It also
     accepts a tuple or list for `n` and `dist` to specify different number of vertices and distance
@@ -222,7 +222,7 @@ def grid(n, dist, num_points, noise_std, seed=None):
     return x, y
 
 
-def moons(radius, num_points, noise_std, angle=0, shift = None, seed=None):
+def moons(num_points, radius, noise_std, angle=0, shift = None, seed=None):
     """
     Generate points on a double moon shape with the specified parameters.
 
@@ -297,7 +297,7 @@ def bad_swiss_roll(num_points, noise_std, hole=True, seed=None):
 
     return x, y
 
-def swiss_roll(radius1, radius2, num_revolutions, num_points, noise_std, angle=0, seed=None):
+def swiss_roll(num_points, radius1, radius2, num_revolutions, noise_std, angle=0, seed=None):
     """
     Generate points on a swiss roll shape with the specified parameters.
 
@@ -337,7 +337,7 @@ def swiss_roll(radius1, radius2, num_revolutions, num_points, noise_std, angle=0
 
 
 
-def swirl(radius, num_points, noise_std, angle=0, seed=None):
+def swirl(num_points, radius, noise_std, angle=0, seed=None):
     """
     Generate points on a swirl shape with the specified parameters.
 
