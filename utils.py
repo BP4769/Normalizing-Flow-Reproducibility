@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import torch
 
 def generate_continuously_colored_samples(num_samples):
     """
@@ -21,3 +22,22 @@ def generate_continuously_colored_samples(num_samples):
     colors = colormap(color_norm(y_samples))
 
     return samples, colors
+
+def generate_grid_data(x_range, y_range, x_tick, y_tick):
+    """
+    Generate a grid of points in the x-y plane.
+
+    :param x_range: A tuple (x_min, x_max) specifying the range of x values.
+    :param y_range: A tuple (y_min, y_max) specifying the range of y values.
+    :param x_tick: Number of points to generate along the x-axis.
+    :param y_tick: Number of points to generate along the y-axis.
+    :return: A 2D tensor of shape (x_tick * y_tick, 2), each row representing a point [x, y].
+    """
+    # Generate x and y values for the grid
+    x_values = torch.linspace(x_range[0], x_range[1], x_tick)
+    y_values = torch.linspace(y_range[0], y_range[1], y_tick)
+    
+    # Create grid points
+    grid_points = torch.cartesian_prod(x_values, y_values)
+    
+    return grid_points
